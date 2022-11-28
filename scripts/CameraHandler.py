@@ -34,7 +34,7 @@ class ImageObject(object):
         self.destination_path = destination_path
         self.exifparser = GExiv2.Metadata()
         try:
-            if self.image_filename is not None:
+            if self.image_filename != None:
                 self.open()
         except Exception as e:
             raise e
@@ -56,7 +56,7 @@ class ImageObject(object):
 
     # build destpath
     def _dest_path(self):
-        if (self.destination_path[-1] is not "/"):
+        if (self.destination_path[-1] != "/"):
             self.destination_path += "/"
 
         return r"%s/%s/%s/%s/" % (self.destination_path, *self.time_info())
@@ -79,7 +79,7 @@ class ImageObject(object):
 
         dpath = os.path.normpath(dpath)
 
-        if dpath[-1] is not "/":
+        if dpath[-1] != "/":
             self.final_path = dpath + "/"
         else:
             self.final_path = dpath
@@ -103,7 +103,7 @@ class CameraImport():
         self.destination_path = destination_path
 
         self.raw_ext = []
-        if extensions is not None:
+        if extensions != None:
             for ext in extensions:
                 if not(ext in self.raw_ext):
                     self.raw_ext.append(ext.upper())
