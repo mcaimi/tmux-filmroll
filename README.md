@@ -21,10 +21,14 @@ Photo creation times are read from the EXIF metatata headers if present, otherwi
 The plugin consists of:
 
  1. a bash script bound to the 'f' key in tmux that fires up the plugin
- 2. a python script that does all the transferring work
+ 2. a small Go program that sorts and transfers files.
 
 
 ## Configuration ##
+
+Install the Go Media Importer CLI:
+
+    # go install github.com/mcaimi/cameraimport@latest
 
 After installing the plugin you only need to set the source and destination path parameters in tmux.conf:
 
@@ -39,6 +43,4 @@ After installing the plugin you only need to set the source and destination path
 To install the plugin, use tmux-plugins/tpm:
 
     set -g @plugins 'mcaimi/tmux-filmroll'
-
-you also need both python3 and exiv2 packages installed.
 

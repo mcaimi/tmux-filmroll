@@ -7,14 +7,14 @@ function prepare_filmroll_cmd() {
   FILMROLL_SOURCE_PATH="$(get_tmux_option "$filmroll_source_path")"
   FILMROLL_DESTINATION_PATH="$(get_tmux_option "$filmroll_destination_path")"
 
-  COUNTCMD="$CURRENT_DIR/CameraHandler.py --count --source $FILMROLL_SOURCE_PATH --destination $FILMROLL_DESTINATION_PATH"
-  SHELLCMD="$CURRENT_DIR/CameraHandler.py --source $FILMROLL_SOURCE_PATH --destination $FILMROLL_DESTINATION_PATH"
+  COUNTCMD="$GOPATH/bin/cameraimport count -s $FILMROLL_SOURCE_PATH"
+  SHELLCMD="$GOPATH/bin/cameraimport import -s $FILMROLL_SOURCE_PATH -d $FILMROLL_DESTINATION_PATH"
 
   # confirmation message
   MSG=$($COUNTCMD)
 
   # execute script
-  tmux confirm-before -p "> $MSG" "split-window -h -p 30 $SHELLCMD"
+  tmux confirm-before -p "> $MSG. Do you want to proceed [y/n]?" "split-window -h -p 30 $SHELLCMD"
 }
 
 function main() {
