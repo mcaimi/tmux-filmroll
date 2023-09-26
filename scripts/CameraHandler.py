@@ -39,6 +39,7 @@ VIDEO_TYPES: List = [
         ".avi",
         ".mpg",
         ".mov",
+        ".mp4",
         ".mkv"
     ]
 
